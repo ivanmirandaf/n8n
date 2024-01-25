@@ -5,27 +5,27 @@ Great that you are here and you want to contribute to n8n
 ## Contents
 
 - [Contributing to n8n](#contributing-to-n8n)
-	- [Contents](#contents)
-	- [Code of conduct](#code-of-conduct)
-	- [Directory structure](#directory-structure)
-	- [Development setup](#development-setup)
-		- [Requirements](#requirements)
-			- [Node.js](#nodejs)
-			- [pnpm](#pnpm)
-				- [pnpm workspaces](#pnpm-workspaces)
-			- [corepack](#corepack)
-			- [Build tools](#build-tools)
-		- [Actual n8n setup](#actual-n8n-setup)
-		- [Start](#start)
-	- [Development cycle](#development-cycle)
-		- [Test suite](#test-suite)
-			- [Unit tests](#unit-tests)
-			- [E2E tests](#e2e-tests)
-	- [Releasing](#releasing)
-	- [Create custom nodes](#create-custom-nodes)
-	- [Extend documentation](#extend-documentation)
-	- [Contribute workflow templates](#contribute-workflow-templates)
-	- [Contributor License Agreement](#contributor-license-agreement)
+  - [Contents](#contents)
+  - [Code of conduct](#code-of-conduct)
+  - [Directory structure](#directory-structure)
+  - [Development setup](#development-setup)
+    - [Requirements](#requirements)
+      - [Node.js](#nodejs)
+      - [pnpm](#pnpm)
+        - [pnpm workspaces](#pnpm-workspaces)
+      - [corepack](#corepack)
+      - [Build tools](#build-tools)
+    - [Actual n8n setup](#actual-n8n-setup)
+    - [Start](#start)
+  - [Development cycle](#development-cycle)
+    - [Test suite](#test-suite)
+      - [Unit tests](#unit-tests)
+      - [E2E tests](#e2e-tests)
+  - [Releasing](#releasing)
+  - [Create custom nodes](#create-custom-nodes)
+  - [Extend documentation](#extend-documentation)
+  - [Contribute workflow templates](#contribute-workflow-templates)
+  - [Contributor License Agreement](#contributor-license-agreement)
 
 ## Code of conduct
 
@@ -209,6 +209,7 @@ E2E tests can be started via one of the following commands:
 - `pnpm test:e2e:dev`: Start n8n in development mode and run e2e tests interactively. Reacts to code changes (i.e. runs `pnpm dev` and `cypress open`)
 - `pnpm test:e2e:all`: Start n8n and run e2e tests headless (i.e. runs `pnpm start` and `cypress run --headless`)
 
+⚠️ You have to run `pnpm cypress:install` to install cypress before running the tests for the first time and to update cypress.
 ⚠️ Remember to stop your dev server before. Otherwise port binding will fail.
 
 ## Releasing
