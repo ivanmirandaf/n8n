@@ -250,6 +250,13 @@ export const schema = {
 			env: 'EXECUTIONS_MODE',
 		},
 
+		concurrency: {
+			doc: 'Max number of executions to run in parallel in a single container/process',
+			format: Number,
+			default: 10,
+			env: 'EXECUTIONS_CONCURRENCY',
+		},
+
 		// A Workflow times out and gets canceled after this time (seconds).
 		// If the workflow is executed in the main process a soft timeout
 		// is executed (takes effect after the current node finishes).

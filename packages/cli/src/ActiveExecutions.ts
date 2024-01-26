@@ -8,7 +8,9 @@ import type {
 	ExecutionStatus,
 } from 'n8n-workflow';
 import { ApplicationError, WorkflowOperationError, createDeferredPromise } from 'n8n-workflow';
+import { Semaphore } from 'n8n-core';
 
+import config from '@/config';
 import type {
 	ExecutionPayload,
 	IExecutingWorkflowData,
@@ -25,6 +27,8 @@ export class ActiveExecutions {
 	private activeExecutions: {
 		[index: string]: IExecutingWorkflowData;
 	} = {};
+
+	private executionQueue = new Semaphore(config.getEnv('executions.concurrency'));
 
 	constructor(
 		private readonly logger: Logger,
@@ -79,6 +83,9 @@ export class ActiveExecutions {
 
 			await this.executionRepository.updateExistingExecution(executionId, execution);
 		}
+
+		// Wait here in case execution concurrency limit is reached
+		await this.executionQueue.acquire();
 
 		this.activeExecutions[executionId] = {
 			executionData,
@@ -139,6 +146,8 @@ export class ActiveExecutions {
 		if (execution === undefined) {
 			return;
 		}
+
+		this.executionQueue.release();
 
 		// Resolve all the waiting promises
 

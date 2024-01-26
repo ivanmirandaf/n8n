@@ -12,6 +12,7 @@ export * from './DirectoryLoader';
 export * from './Interfaces';
 export { InstanceSettings } from './InstanceSettings';
 export * from './NodeExecuteFunctions';
+export { Semaphore } from './Semaphore';
 export * from './WorkflowExecute';
 export { NodeExecuteFunctions };
 export * from './errors';
